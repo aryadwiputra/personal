@@ -5,19 +5,20 @@ import NavigationLink from './Link'
 export default function Navigation() {
     return (
         <>
-            <nav className="hidden border-b border-dashed border-gray-800 bg-gray-900 py-4 shadow lg:block">
+            <nav className="hidden border-b border-dashed border-slate-800 bg-slate-900 py-4 shadow lg:block">
                 <div className="mx-auto max-w-screen-2xl">
                     <div className="flex items-center justify-between">
                         {/* Title */}
-                        <Link href='/'
-                            className="mr-3 text-xl font-semibold capitalize text-white"
+                        <Link href={route('home')}
+                            className="mr-3 text-xl font-bold capitalize text-white"
                         >
                             {import.meta.env.VITE_APP_NAME}
                         </Link>
                         <div className="flex flex-1 items-center justify-between">
                             {/* Left Menu */}
                             <div className='flex items-center'>
-                                <NavigationLink>Beranda</NavigationLink>
+                                <NavigationLink href={route('home')}
+                                    active={route().current('home')}>Beranda</NavigationLink>
                             </div>
                             {/* Right Menu */}
                             <div className="flex items-center">
