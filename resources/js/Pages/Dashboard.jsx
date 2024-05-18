@@ -7,6 +7,6 @@ const Dashboard = () => {
     )
 }
 
-Dashboard.layout = page => <DashboardLayout children={page} title="Inertia" />
+Dashboard.layout = page => <DashboardLayout children={page} title="Dashboard" />
 
 export default Dashboard

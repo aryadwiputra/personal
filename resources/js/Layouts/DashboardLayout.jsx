@@ -1,4 +1,4 @@
-import Sidebar from '@/Components/Dashboard/Sidebar'
+import Sidebar from '@/Components/Dashboard/Sidebar/Index'
 import Topbar from '@/Components/Dashboard/Topbar'
 import { Head, Link } from '@inertiajs/react'
 import React, { useState } from 'react'
@@ -19,7 +19,7 @@ export default function DashboardLayout({ children, title }) {
                     {/* <div className="col-span-3 overflow-auto lg:col-span-5 lg-border-l w-[82%]"> */}
                     <div className={`col-span-3 overflow-auto lg:col-span-5 lg-border-l w-${isSidebarOpen ? '[82%]' : 'full'}`}>
                         <div className="px-6 py-6 lg:px-8">
-                            <Topbar toggleSidebar={toggleSidebar} />
+                            <Topbar toggleSidebar={toggleSidebar} title={title} />
 
                             {children}
                         </div>

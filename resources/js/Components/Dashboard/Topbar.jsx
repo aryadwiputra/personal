@@ -3,7 +3,7 @@ import { Link, usePage } from '@inertiajs/react'
 import React from 'react'
 import { HiOutlineMenu } from 'react-icons/hi'
 
-export default function Topbar({ toggleSidebar }) {
+export default function Topbar({ toggleSidebar, title }) {
     // Data pengguna contoh
     const { auth } = usePage().props
 
@@ -19,8 +19,8 @@ export default function Topbar({ toggleSidebar }) {
                     <HiOutlineMenu className="h-6 w-6" />
                 </button>
                 <div className="">
-                    <div className='font-semibold'>Sinar Kasih</div>
-                    <div>Event Ticket</div>
+                    <div className='font-semibold'>Arya Dwi Putra</div>
+                    <div>{title}</div>
                 </div>
             </div>
             <div className="flex items-center space-x-3">
