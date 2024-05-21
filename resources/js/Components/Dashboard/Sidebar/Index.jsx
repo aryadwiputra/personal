@@ -19,7 +19,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                     <div className="px-3">
                         <div className="py-2 flex flex-col space-y-2">
                             <h2 className='text-white font-bold text-xl px-3 mb-2'>Menu</h2>
-                            <SidebarLink href={route('dashboard')} active={route().current('dashboard')}>
+                            <SidebarLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
                                 <HiOutlineHome className="mr-2" />
                                 Dashboard
                             </SidebarLink>
