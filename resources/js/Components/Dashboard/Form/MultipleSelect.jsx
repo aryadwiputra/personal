@@ -13,7 +13,7 @@ export default function MultipleSelect({ data, selectedItem, onChange }) {
             multiple
             open={isOpen}
         >
-            <Listbox.Button className="flex h-11 w-full items-center justify-between gap-x-2 rounded-lg border px-3 focus:outline-none">
+            <Listbox.Button className="flex h-11 w-full items-center justify-between gap-x-2 rounded-lg border px-3 focus:outline-none bg-white">
                 Selected ({selectedItem.length})
                 <div onClick={() => setIsOpen(!isOpen)}>
                     <svg
@@ -32,11 +32,11 @@ export default function MultipleSelect({ data, selectedItem, onChange }) {
                 </div>
             </Listbox.Button>
             {selectedItem.length ? (
-                <small className="mt-2 flex items-center flex-wrap gap-2 text-xs text-blue-600">
+                <small className="mt-2 flex items-center flex-wrap gap-2 text-xs text-blue-600 ">
                     {selectedItem.map((item) => (
                         <div
                             key={item.id}
-                            className="group flex overflow-hidden select-none rounded bg-gray-100"
+                            className="group flex overflow-hidden select-none rounded bg-white"
                         >
                             <span className="px-2 py-1 font-medium text-black">
                                 {item.name}

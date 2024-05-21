@@ -7,7 +7,7 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
     return (
         <Listbox
             as="div"
-            className="relative rounded-xl"
+            className="relative rounded-xl bg-white"
             value={value}
             onChange={(e) => {
                 onChange(e)
