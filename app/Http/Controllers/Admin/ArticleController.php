@@ -32,7 +32,16 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Article/Index');
+        $articles = Article::query()
+            ->with([
+                'author',
+                'tags' => fn($query) => $query->select('name', 'slug', 'id'),
+                'category' => fn($query) => $query->select('name', 'slug', 'id'),
+            ])
+            ->paginate(10);
+        return Inertia::render('Admin/Article/Index', [
+            'articles' => $articles
+        ]);
     }
 
     /**
