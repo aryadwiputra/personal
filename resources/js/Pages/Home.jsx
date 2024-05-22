@@ -25,7 +25,11 @@ const Home = ({ articles }) => {
                                         <div className="flex mb-3">
                                             <span className="text-blue-600 bg-slate-200 px-3 py-1 rounded text-sm font-semibold">{article.category.name}</span>
                                         </div>
-                                        <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+                                        <h3 className="text-xl font-bold mb-2">
+                                            <Link href={route('articles.show', article.slug)}>
+                                                {article.title}
+                                            </Link>
+                                        </h3>
                                         <p className="text-gray-700 mb-4 line-clamp-2">
                                             {article.teaser}
                                         </p>
@@ -44,6 +48,7 @@ const Home = ({ articles }) => {
                     </div>
                 </div>
             </section>
+
         </>
     )
 }
