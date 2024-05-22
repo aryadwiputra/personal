@@ -23,7 +23,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                                 <HiOutlineHome className="mr-2" />
                                 Dashboard
                             </SidebarLink>
-                            <SidebarLink href={route('admin.blog.index')} active={route().current('admin.blog.*')}>
+                            <SidebarLink href={route('admin.articles.index')} active={route().current('admin.articles.*')}>
                                 <HiOutlinePencil className='mr-2' />
                                 Blog
                             </SidebarLink>

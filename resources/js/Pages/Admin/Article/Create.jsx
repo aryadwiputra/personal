@@ -27,7 +27,7 @@ const Index = ({ categories, tags, errors }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold leading-tight">Create New Blog</h2>
+                <h2 className="text-2xl font-semibold leading-tight">Create new article</h2>
             </div>
 
             <section className="my-5">

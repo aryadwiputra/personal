@@ -8,14 +8,14 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class BlogController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Admin/Blog/Index');
+        return Inertia::render('Admin/Article/Index');
     }
 
     /**
@@ -25,7 +25,7 @@ class BlogController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return Inertia::render('Admin/Blog/Create', [
+        return Inertia::render('Admin/Article/Create', [
             'categories' => $categories,
             'tags' => $tags
         ]);
