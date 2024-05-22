@@ -9,6 +9,7 @@ use App\Http\Resources\Articles\ArticleTableResource;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Article;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -79,7 +80,7 @@ class ArticleController extends Controller
             'slug' => Str::slug($title),
             'teaser' => $request->teaser,
             'body' => $request->body,
-            'picture' => $pictureName,
+            'picture' => $pictureName ?? null,
             'status' => $request->status,
             'category_id' => $request->category_id,
         ]);
@@ -102,15 +103,56 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = Article::find($id);
+
+        return Inertia::render('Admin/Article/Edit', [
+            'article' => $article->load([
+                'tags' => fn($query) => $query->select('id', 'name'),
+                'category' => fn($query) => $query->select('id', 'name'),
+            ]),
+            'statuses' => $this->statuses,
+            'tags' => $this->tags,
+            'categories' => $this->categories,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ArticleRequest $request, string $id)
     {
-        //
+        $article = Article::find($id);
+
+        if ($request->hasFile('picture')) {
+            // Cek apakah ada picture sebelumnya
+            if ($article->picture) {
+                Storage::delete('public/articles/' . $article->picture);
+            }
+
+            $picture = $request->file('picture');
+            $pictureName = time() . '.' . $picture->getClientOriginalExtension();
+
+            // Simpan file di storage
+            $picture->storeAs('articles', $pictureName, 'public');
+
+            // Simpan file di public path
+            // $publicPath = public_path('images/articles/' . $pictureName);
+            // $picture->move(public_path('images/articles'), $pictureName);
+        }
+
+        $article->update([
+            'title' => $title = $request->title,
+            'slug' => Str::slug($title),
+            'teaser' => $request->teaser,
+            'body' => $request->body,
+            'picture' => $pictureName ?? $article->picture,
+            'status' => $request->status,
+            'category_id' => $request->category_id,
+        ]);
+
+        $article->tags()->sync($request->tags, true);
+
+        return to_route('admin.articles.index')->with('success', 'Article updated successfully');
     }
 
     /**
