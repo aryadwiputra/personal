@@ -49,6 +49,6 @@ const Index = () => {
     )
 }
 
-Index.layout = page => <AppLayout children={page} title="Artikel" />
+Index.layout = page => <AppLayout children={page} title="Tentang" />
 
 export default Index
