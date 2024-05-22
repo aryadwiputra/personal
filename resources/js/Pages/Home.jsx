@@ -1,8 +1,10 @@
+import Hero from '@/Components/Frontend/Hero/Index'
 import AppLayout from '@/Layouts/AppLayout'
 
 const Home = () => {
     return (
         <>
+            <Hero />
         </>
     )
 }
