@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\ArticleStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Resources\Articles\ArticleTableResource;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Article;
@@ -40,7 +41,7 @@ class ArticleController extends Controller
             ])
             ->paginate(10);
         return Inertia::render('Admin/Article/Index', [
-            'articles' => $articles
+            'articles' => ArticleTableResource::collection($articles)
         ]);
     }
 

@@ -2,10 +2,10 @@ import { Link } from '@inertiajs/react';
 import clsx from 'clsx'
 import React from 'react';
 
-export default function Pagination({ links }) {
+export default function Pagination({ meta, links }) {
     return (
         <div>
-            {links.length > 2 && (
+            {meta.links.length > 2 && (
                 <>
                     <ul className="flex mt-10 justify-between md:hidden items-center gap-x-0.5">
                         {links.prev ? (
@@ -41,7 +41,7 @@ export default function Pagination({ links }) {
                     </ul>
 
                     <ul className="hidden mt-10 justify-center md:flex items-center gap-x-1">
-                        {links.map((item, i) => {
+                        {meta.links.map((item, i) => {
                             return item.url != null ? (
                                 item.label.includes('Previous') ? (
                                     <PaginateLink active={item.active} key={i} href={item.url}>

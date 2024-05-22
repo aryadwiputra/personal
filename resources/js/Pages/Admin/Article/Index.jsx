@@ -2,14 +2,21 @@ import Pagination from '@/Components/Dashboard/Pagination';
 import DashboardLayout from '@/Layouts/DashboardLayout'
 import { Link } from '@inertiajs/react'
 import clsx from 'clsx';
+import { HiEye, HiPencil, HiTrash } from 'react-icons/hi';
 
 const Index = ({ articles }) => {
-    console.log(articles);
     return (
         <>
             <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-semibold leading-tight">Manage Articles</h2>
-                <Link href={route('admin.articles.create')} className='px-4 py-2 bg-slate-900 text-white rounded'>Create</Link>
+                <div className="flex gap-2">
+                    <Link href={route('admin.articles.create')} className="px-3 py-2 bg-red-500 text-white rounded flex text-center items-center">
+                        <HiTrash className='mr-2' /> Delete All
+                    </Link>
+                    <Link href={route('admin.articles.create')} className="px-4 py-2 bg-slate-900 text-white rounded">
+                        Create
+                    </Link>
+                </div>
             </div>
 
             <section className="my-5">
@@ -17,7 +24,7 @@ const Index = ({ articles }) => {
                 <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-200">
                         <thead>
-                            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <tr className="bg-gray-200 text-gray-600  text-sm leading-normal">
                                 <th className="py-3 px-6 text-left">No</th>
                                 <th className="py-3 px-6 text-left">Title</th>
                                 <th className="py-3 px-6 text-left">Category</th>
@@ -42,20 +49,28 @@ const Index = ({ articles }) => {
                                                 {article.status}
                                             </span>
                                         </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <Link href={route('admin.articles.edit', article.id)} className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700'>Edit</Link>
+                                        <td className="py-3 px-6 flex gap-2 justify-center">
+                                            <Link href={route('admin.articles.destroy', article.id)} className="px-3 py-2 bg-red-500 text-white rounded flex items-center">
+                                                <HiTrash />
+                                            </Link>
+                                            <Link href={route('admin.articles.edit', article.id)} className="px-3 py-2 bg-green-500 text-white rounded flex items-center">
+                                                <HiPencil />
+                                            </Link>
+                                            <Link href={route('admin.articles.show', article.id)} className="px-3 py-2 bg-slate-800 text-white rounded flex items-center">
+                                                <HiEye />
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan={4} className="py-3 px-6 text-center">No articles found</td>
+                                    <td colSpan={5} className="py-3 px-6 text-center">No articles found</td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
                     {/* Pagination */}
-                    <Pagination links={articles.links} />
+                    <Pagination meta={articles.meta} links={articles.links} />
                 </div>
             </section>
         </>
