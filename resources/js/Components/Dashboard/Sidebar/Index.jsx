@@ -25,7 +25,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             </SidebarLink>
                             <SidebarLink href={route('admin.articles.index')} active={route().current('admin.articles.*')}>
                                 <HiOutlinePencil className='mr-2' />
-                                Blog
+                                Article
                             </SidebarLink>
                             {/* <Link className="flex items-center justify-start px-6 py-3 rounded-md text-lg font-semibold text-white hover:bg-gray-500 hover:text-butter-yellow" href={route('admin.events.index')}>
                                 <HiOutlineTicket className="mr-2" />
