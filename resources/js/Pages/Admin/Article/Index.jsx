@@ -15,9 +15,6 @@ const Index = ({ articles }) => {
             <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-semibold leading-tight">Manage Articles</h2>
                 <div className="flex gap-2">
-                    <Link href={route('admin.articles.create')} className="px-3 py-2 bg-red-500 text-white rounded flex text-center items-center">
-                        <HiTrash className='mr-2' /> Delete All
-                    </Link>
                     <Link href={route('admin.articles.create')} className="px-4 py-2 bg-slate-900 text-white rounded">
                         Create
                     </Link>
