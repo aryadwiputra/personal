@@ -19,6 +19,8 @@ export default function Navigation() {
                             <div className='flex items-center'>
                                 <NavigationLink href={route('home')}
                                     active={route().current('home')}>Beranda</NavigationLink>
+                                <NavigationLink href={route('articles.index')}
+                                    active={route().current('articles.*')}>Artikel</NavigationLink>
                             </div>
                             {/* Right Menu */}
                             <div className="flex items-center">
