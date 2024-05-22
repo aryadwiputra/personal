@@ -1,34 +1,117 @@
 import { Link } from '@inertiajs/react';
+import clsx from 'clsx'
 import React from 'react';
-import he from 'he';
 
-export default function Pagination({ events }) {
-    const { links } = events;
-
-    if (!links || links.length === 1) return null; // Tidak menampilkan jika hanya satu halaman
-
+export default function Pagination({ links }) {
     return (
-        <div className="flex justify-end mt-4 space-x-2">
-            <div className="flex justify-between w-full">
-
-                <p>
-                    Total : {events.total}
-                </p>
-                <div className="flex space-x-2">
-                    {links.map((link, index) => (
-                        <React.Fragment key={index}>
-                            {link.url && (
+        <div>
+            {links.length > 2 && (
+                <>
+                    <ul className="flex mt-10 justify-between md:hidden items-center gap-x-0.5">
+                        {links.prev ? (
+                            <li>
                                 <Link
-                                    href={link.url}
-                                    className={`px-3 py-1 rounded ${link.active ? 'font-semibold bg-dark-indigo text-white hover:bg-indigo-900' : 'bg-gray-200 text-gray-700 hover:bg-gray-300 '}`}
+                                    className="rounded border inline-flex p-2"
+                                    href={links.prev}
+                                    preserveScroll
                                 >
-                                    {he.decode(link.label)}
+                                    <LeftIcon />
                                 </Link>
-                            )}
-                        </React.Fragment>
-                    ))}
-                </div>
-            </div>
+                            </li>
+                        ) : (
+                            <li className="rounded border inline-flex p-2 cursor-none">
+                                <LeftIcon />
+                            </li>
+                        )}
+                        {links.next ? (
+                            <li>
+                                <Link
+                                    className="rounded border inline-flex p-2"
+                                    href={links.next}
+                                    preserveScroll
+                                >
+                                    <RightIcon />
+                                </Link>
+                            </li>
+                        ) : (
+                            <li className="rounded border inline-flex p-2 cursor-none">
+                                <RightIcon />
+                            </li>
+                        )}
+                    </ul>
+
+                    <ul className="hidden mt-10 justify-center md:flex items-center gap-x-1">
+                        {links.map((item, i) => {
+                            return item.url != null ? (
+                                item.label.includes('Previous') ? (
+                                    <PaginateLink active={item.active} key={i} href={item.url}>
+                                        <LeftIcon />
+                                    </PaginateLink>
+                                ) : item.label.includes('Next') ? (
+                                    <PaginateLink active={item.active} key={i} href={item.url}>
+                                        <RightIcon />
+                                    </PaginateLink>
+                                ) : (
+                                    <PaginateLink active={item.active} key={i} href={item.url}>
+                                        {item.label}
+                                    </PaginateLink>
+                                )
+                            ) : null;
+                        })}
+                    </ul>{' '}
+                </>
+            )}
         </div>
+    );
+}
+
+function LeftIcon() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+        >
+            <path
+                fillRule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+}
+
+function RightIcon() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+        >
+            <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+}
+
+function PaginateLink({ active, href, children }) {
+    return (
+        <li>
+            <Link
+                className={clsx(
+                    active && 'text-blue-600 border-blue-300 bg-blue-50',
+                    'w-11 h-9 text-sm font-semibold rounded shadow-sm border flex items-center justify-center'
+                )}
+                href={href}
+                preserveScroll
+            >
+                {children}
+            </Link>
+        </li>
     );
 }
