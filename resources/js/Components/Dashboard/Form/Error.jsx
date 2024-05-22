@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default function Error({ value, children }) {
+export default function Error({ message, className = '', ...props }) {
     return (
-        <div className="mt-2 text-rose-500 font-medium">
-            {value ? value : children}
-        </div>
+        //
+        <p {...props} className={'text-red-600 font-medium mt-2 ' + className}>
+            {message}
+        </p>
     );
 }
+
