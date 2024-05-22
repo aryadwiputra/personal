@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -11,7 +13,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        // $articles = Article::orderBy("created_at", "desc")->get();
+        $articles = Article::with("category")->with('tags')->orderBy("created_at", "desc")->get();
+
+        return Inertia::render("Article/Index", [
+            "articles" => $articles
+        ]);
     }
 
     /**
@@ -33,9 +40,13 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $article = Article::with('category')->with('tags')->where("slug", $slug)->firstOrFail();
+
+        return Inertia::render("Article/Detail", [
+            "article" => $article
+        ]);
     }
 
     /**
