@@ -1,10 +1,15 @@
 import Pagination from '@/Components/Dashboard/Pagination';
 import DashboardLayout from '@/Layouts/DashboardLayout'
-import { Link } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import clsx from 'clsx';
 import { HiEye, HiPencil, HiTrash } from 'react-icons/hi';
 
 const Index = ({ articles }) => {
+    const handleDelete = (url) => {
+        if (window.confirm('Are you sure you want to delete this article?')) {
+            router.delete(url);
+        }
+    };
     return (
         <>
             <div className="flex items-center justify-between">
@@ -50,9 +55,12 @@ const Index = ({ articles }) => {
                                             </span>
                                         </td>
                                         <td className="py-3 px-6 flex gap-2 justify-center">
-                                            <Link href={route('admin.articles.destroy', article.id)} className="px-3 py-2 bg-red-500 text-white rounded flex items-center">
+                                            <button
+                                                onClick={() => handleDelete(route('admin.articles.destroy', article.id))}
+                                                className="px-3 py-2 bg-red-500 text-white rounded flex items-center hover:bg-red-700"
+                                            >
                                                 <HiTrash />
-                                            </Link>
+                                            </button>
                                             <Link href={route('admin.articles.edit', article.id)} className="px-3 py-2 bg-green-500 text-white rounded flex items-center">
                                                 <HiPencil />
                                             </Link>
