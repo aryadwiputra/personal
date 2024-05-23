@@ -11,7 +11,7 @@ const Home = ({ articles }) => {
                 <div className="max-w-screen-2xl mx-auto container px-6 md:px-0 py-24">
                     <div className="flex justify-between items-center mb-12">
                         <h2 className='text-white text-4xl font-bold'>Artikel Terbaru</h2>
-                        <Link href='#' className='text-white font-semibold text-xl'>Selengkapnya</Link>
+                        <Link href={route('articles.index')} className='text-white font-semibold text-xl'>Selengkapnya</Link>
                     </div>
                     {/* List Cards Article */}
                     <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -53,6 +53,6 @@ const Home = ({ articles }) => {
     )
 }
 
-Home.layout = page => <AppLayout children={page} title="Home" />
+Home.layout = page => <AppLayout children={page} title="Beranda" />
 
 export default Home
