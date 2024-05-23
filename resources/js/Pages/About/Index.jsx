@@ -26,10 +26,10 @@ const Index = () => {
                         </div>
                         {/* Button to social media */}
                         <div className="flex flex-wrap justify-center gap-2 md:gap-0 md:justify-start mt-5">
-                            <a target='_blank' href="https://www.linkedin.com/in/aryadwiputra/" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">LinkedIn</a>
-                            <a target='_blank' href="https://github.com/aryadwiputra" className="bg-gray-500 text-white font-bold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">GitHub</a>
-                            <a target='_blank' href="https://www.facebook.com/aryadptraa/" className="bg-blue-800 text-white font-bold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">Facebook</a>
-                            <a target='_blank' href="https://www.instagram.com/aryadwiiptr/" className="bg-red-500 text-white font-bold py-2 px-4 rounded-md mb-2 md:mb-0">Instagram</a>
+                            <a target='_blank' href="https://www.linkedin.com/in/aryadwiputra/" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">LinkedIn</a>
+                            <a target='_blank' href="https://github.com/aryadwiputra" className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">GitHub</a>
+                            <a target='_blank' href="https://www.facebook.com/aryadptraa/" className="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-4">Facebook</a>
+                            <a target='_blank' href="https://www.instagram.com/aryadwiiptr/" className="bg-red-500 text-white font-semibold py-2 px-4 rounded-md mb-2 md:mb-0">Instagram</a>
                         </div>
 
                     </div>
