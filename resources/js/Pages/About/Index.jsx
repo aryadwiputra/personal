@@ -3,12 +3,13 @@ import PortfolioCard from '@/Components/Frontend/PortfolioCard/Index'
 import AppLayout from '@/Layouts/AppLayout'
 import { Link } from '@inertiajs/react'
 
-const Index = () => {
-    const projects = [
-        { id: 1, title: 'Project 1', description: 'This is a project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['React', 'Vue'], githubUrl: 'https://github.com/aryadwiputra/project1' },
-        { id: 2, title: 'Project 2', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
-        { id: 3, title: 'Project 3', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
-    ]
+const Index = ({ projects }) => {
+    console.log(projects)
+    // const projects = [
+    //     { id: 1, title: 'Project 1', description: 'This is a project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['React', 'Vue'], githubUrl: 'https://github.com/aryadwiputra/project1' },
+    //     { id: 2, title: 'Project 2', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
+    //     { id: 3, title: 'Project 3', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
+    // ]
     return (
         <>
             <section className="bg-slate-900">
@@ -38,8 +39,8 @@ const Index = () => {
                     <div className="mt-10">
                         <h1 className="text-white text-4xl font-bold">Portfolio</h1>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-                            {projects.map(project => (
-                                <PortfolioCard key={project.id} project={project} />
+                            {projects.map((project, index) => (
+                                <PortfolioCard key={index} project={project} />
                             ))}
                         </div>
                     </div>

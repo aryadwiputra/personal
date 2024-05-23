@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import React from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import { HiOutlineHome, HiOutlineLogout, HiOutlinePencil } from "react-icons/hi";
+import { HiCode, HiOutlineHome, HiOutlineLogout, HiOutlinePencil } from "react-icons/hi";
 import SidebarLink from './Link';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
@@ -25,12 +25,12 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             </SidebarLink>
                             <SidebarLink href={route('admin.articles.index')} active={route().current('admin.articles.*')}>
                                 <HiOutlinePencil className='mr-2' />
-                                Article
+                                Articles
                             </SidebarLink>
-                            {/* <Link className="flex items-center justify-start px-6 py-3 rounded-md text-lg font-semibold text-white hover:bg-gray-500 hover:text-butter-yellow" href={route('admin.events.index')}>
-                                <HiOutlineTicket className="mr-2" />
-                                Events
-                            </Link> */}
+                            <SidebarLink href={route('admin.projects.index')} active={route().current('admin.projects.*')}>
+                                <HiCode className='mr-2' />
+                                Projects
+                            </SidebarLink>
                         </div>
                         <div className="py-6 flex flex-col space-y-2">
                             <h2 className='text-white font-bold text-xl px-3 mb-2'>Setting</h2>
