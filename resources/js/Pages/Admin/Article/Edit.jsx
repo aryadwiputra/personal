@@ -14,7 +14,7 @@ const Index = ({ article, categories, tags, statuses }) => {
     const { data, setData, transform, put, processing, errors } = useForm({
         title: article.title,
         teaser: article.teaser,
-        category_id: article.category_id,
+        category_id: article.category,
         body: article.body,
         picture: article.picture,
         tags: [tags[0], tags[1]],
@@ -25,7 +25,7 @@ const Index = ({ article, categories, tags, statuses }) => {
 
     transform((data) => ({
         ...data,
-        category_id: data.category_id,
+        category_id: data.category_id.id,
         tags: data.tags.map((t) => t.id),
         status: data.status.id
     }));
@@ -59,7 +59,7 @@ const Index = ({ article, categories, tags, statuses }) => {
                             <div>
                                 <Label forInput="category_id">Category</Label>
                                 <Select
-                                    value={article.category}
+                                    value={data.category_id}
                                     data={categories}
                                     onChange={(e) => setData('category_id', e)}
                                 />
