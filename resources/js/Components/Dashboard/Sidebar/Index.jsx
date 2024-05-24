@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import React from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import { HiCode, HiOutlineHome, HiOutlineLogout, HiOutlinePencil } from "react-icons/hi";
+import { HiCode, HiOutlineHome, HiOutlineLogout, HiOutlinePencil, HiCollection } from "react-icons/hi";
 import SidebarLink from './Link';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
@@ -30,6 +30,10 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             <SidebarLink href={route('admin.projects.index')} active={route().current('admin.projects.*')}>
                                 <HiCode className='mr-2' />
                                 Projects
+                            </SidebarLink>
+                            <SidebarLink href={route('admin.series.index')} active={route().current('admin.series.*')}>
+                                <HiCollection className='mr-2' />
+                                Series
                             </SidebarLink>
                         </div>
                         <div className="py-6 flex flex-col space-y-2">

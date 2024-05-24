@@ -10,24 +10,29 @@ import Textarea from '@/Components/Dashboard/Form/TextArea'
 import DashboardLayout from '@/Layouts/DashboardLayout'
 import { useForm } from '@inertiajs/react'
 
-const Index = ({ article, categories, tags, statuses }) => {
+const Index = ({ article, categories, tags, statuses, series }) => {
     const { data, setData, transform, put, processing, errors } = useForm({
         title: article.title,
         teaser: article.teaser,
         category_id: article.category,
+        series_id: article.series[0],
         body: article.body,
         picture: article.picture,
         tags: [tags[0], tags[1]],
         status: statuses[article.status]
     });
 
+    console.log(series)
+
     const onChange = (e) => setData(e.target.name, e.target.value);
 
     transform((data) => ({
         ...data,
         category_id: data.category_id.id,
+        series_id: data.series_id.id,
         tags: data.tags.map((t) => t.id),
-        status: data.status.id
+        status: data.status.id,
+
     }));
 
     const handleSubmit = (e) => {
@@ -40,7 +45,7 @@ const Index = ({ article, categories, tags, statuses }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold leading-tight">Create new article</h2>
+                <h2 className="text-2xl font-semibold leading-tight">Edit {article.title}</h2>
             </div>
 
             <section className="my-5">
@@ -53,6 +58,15 @@ const Index = ({ article, categories, tags, statuses }) => {
                             onChange={(e) => setData('picture', e.target.files[0])}
                         />
                         <Error message={errors.picture} />
+                    </div>
+                    <div>
+                        <Label forInput="series_id">Series</Label>
+                        <Select
+                            value={data.series_id ? data.series_id : series}
+                            data={series}
+                            onChange={(e) => setData('series_id', e)}
+                        />
+                        <Error message={errors.series_id} />
                     </div>
                     <div className="grid grid-cols-12 gap-6 mb-6">
                         <div className="col-span-4">
