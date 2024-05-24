@@ -18,7 +18,7 @@ const Index = ({ series }) => {
                             series.map((serie, index) => (
                                 <div className="bg-white rounded-lg shadow-md overflow-hidden" key={index}>
                                     <div className="overflow-hidden">
-                                        <img src={`/series/${serie.picture}`} alt="Series Image" className="w-full h-72 object-cover transition-transform duration-500 hover:scale-110" />
+                                        <img src={`/storage/series/${serie.picture}`} alt="Series Image" className="w-full h-72 object-cover transition-transform duration-500 hover:scale-110" />
                                     </div>
                                     <div className="p-6">
 
