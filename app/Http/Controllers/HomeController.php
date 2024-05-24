@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $articles = Article::with("category")->with('tags')->get();
+        $articles = Article::with("category")->with('tags')->paginate(9);
 
         return Inertia::render("Home", [
             "articles" => $articles

@@ -10,32 +10,35 @@ import Textarea from '@/Components/Dashboard/Form/TextArea'
 import DashboardLayout from '@/Layouts/DashboardLayout'
 import { useForm } from '@inertiajs/react'
 
-const Index = ({ categories, tags, statuses }) => {
+const Index = ({ categories, tags, statuses, series }) => {
     const { data, setData, transform, post, processing, errors } = useForm({
+        category_id: '',
+        series_id: '',
         title: '',
         teaser: '',
-        category_id: '',
         body: '',
         picture: '',
         tags: [tags[0], tags[1]],
         status: statuses[0]
     });
 
+
     const onChange = (e) => setData(e.target.name, e.target.value);
 
     transform((data) => ({
         ...data,
         category_id: data.category_id.id,
+        series_id: data.series_id.id,
         tags: data.tags.map((t) => t.id),
         status: data.status.id
     }));
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data)
         post(route('admin.articles.store'), {
             preserveScroll: true
         });
+        console.log(data)
     }
 
     return (
@@ -54,6 +57,15 @@ const Index = ({ categories, tags, statuses }) => {
                             onChange={(e) => setData('picture', e.target.files[0])}
                         />
                         <Error message={errors.picture} />
+                    </div>
+                    <div>
+                        <Label forInput="series_id">Series</Label>
+                        <Select
+                            value={data.series_id}
+                            data={series}
+                            onChange={(e) => setData('series_id', e)}
+                        />
+                        <Error message={errors.series_id} />
                     </div>
                     <div className="grid grid-cols-12 gap-6 mb-6">
                         <div className="col-span-4">
