@@ -4,12 +4,6 @@ import AppLayout from '@/Layouts/AppLayout'
 import { Link } from '@inertiajs/react'
 
 const Index = ({ projects }) => {
-    console.log(projects)
-    // const projects = [
-    //     { id: 1, title: 'Project 1', description: 'This is a project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['React', 'Vue'], githubUrl: 'https://github.com/aryadwiputra/project1' },
-    //     { id: 2, title: 'Project 2', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
-    //     { id: 3, title: 'Project 3', description: 'This is another project', imageUrl: 'https://via.placeholder.com/640x360', technologies: ['Laravel', 'Flutter'], githubUrl: 'https://github.com/aryadwiputra/project2' },
-    // ]
     return (
         <>
             <section className="bg-slate-900">

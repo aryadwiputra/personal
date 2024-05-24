@@ -3,7 +3,6 @@ import AppLayout from '@/Layouts/AppLayout'
 import { Link } from '@inertiajs/react'
 
 const Index = ({ articles }) => {
-    console.log(articles)
     return (
         <>
             <section className="bg-slate-900">
