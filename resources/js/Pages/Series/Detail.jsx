@@ -29,7 +29,7 @@ const Detail = ({ series, articles }) => {
                             articles.map((article, index) => (
                                 <div className="bg-white rounded-lg shadow-md overflow-hidden" key={index}>
                                     <div className="overflow-hidden">
-                                        <img src={`/articles/${article.picture}`} alt="Article Image" className="w-full h-72 object-cover transition-transform duration-500 hover:scale-110" />
+                                        <img src={`/storage/articles/${article.picture}`} alt="Article Image" className="w-full h-72 object-cover transition-transform duration-500 hover:scale-110" />
                                     </div>
                                     <div className="p-6">
                                         <h3 className="text-xl font-bold mb-2">
