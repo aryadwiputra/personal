@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Resources\Articles\ArticleTableResource;
 use App\Models\Category;
+use App\Models\Series;
 use App\Models\Tag;
 use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class ArticleController extends Controller
     public $tags;
     public $categories;
     public $statuses;
+    public $series;
     public function __construct()
     {
         $this->tags = Tag::select('id', 'name')->get();
@@ -27,6 +29,7 @@ class ArticleController extends Controller
             'id' => $status->value,
             'name' => str($status->label())->ucfirst(),
         ]);
+        $this->series = Series::select('id', 'title')->get();
     }
 
     /**
@@ -54,7 +57,8 @@ class ArticleController extends Controller
         return Inertia::render('Admin/Article/Create', [
             'categories' => $this->categories,
             'tags' => $this->tags,
-            'statuses' => $this->statuses
+            'statuses' => $this->statuses,
+            'series' => $this->series
         ]);
     }
 
@@ -86,6 +90,7 @@ class ArticleController extends Controller
         ]);
 
         $article->tags()->attach($request->tags);
+        $article->series()->attach($request->series_id);
 
         return to_route('admin.articles.index')->with('success', 'Article created successfully');
     }
@@ -105,14 +110,18 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
+
         return Inertia::render('Admin/Article/Edit', [
             'article' => $article->load([
                 'tags' => fn($query) => $query->select('id', 'name'),
                 'category' => fn($query) => $query->select('id', 'name'),
+                'series' => fn($query) => $query->select('id', 'title')
             ]),
             'statuses' => $this->statuses,
             'tags' => $this->tags,
             'categories' => $this->categories,
+            'series' => $this->series
+
         ]);
     }
 

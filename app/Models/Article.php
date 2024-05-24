@@ -36,6 +36,11 @@ class Article extends Model
         return $this->belongsTo(User::class, 'user_id')->select('id', 'name', 'username');
     }
 
+    public function series()
+    {
+        return $this->belongsToMany(Series::class, 'series_article')->select('id', 'title', 'slug');
+    }
+
     public function scopeWherePublished($query)
     {
         return $query->where('status', ArticleStatus::PUBLISHED);

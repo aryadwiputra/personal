@@ -3,7 +3,6 @@ import AppLayout from '@/Layouts/AppLayout'
 import { Link } from '@inertiajs/react'
 
 const Home = ({ articles }) => {
-    console.log(articles)
     return (
         <>
             <Hero />
@@ -15,8 +14,8 @@ const Home = ({ articles }) => {
                     </div>
                     {/* List Cards Article */}
                     <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        {articles.length > 0 ? (
-                            articles.map((article, index) => (
+                        {articles.data.length > 0 ? (
+                            articles.data.map((article, index) => (
                                 <div className="bg-white rounded-lg shadow-md overflow-hidden" key={index}>
                                     <div className="overflow-hidden">
                                         <img src={`/articles/${article.picture}`} alt="Article Image" className="w-full h-72 object-cover transition-transform duration-500 hover:scale-110" />

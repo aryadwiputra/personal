@@ -9,8 +9,14 @@ class Category extends Model
 {
     use HasFactory;
 
+
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function series()
+    {
+        return $this->hasMany(Series::class);
     }
 }

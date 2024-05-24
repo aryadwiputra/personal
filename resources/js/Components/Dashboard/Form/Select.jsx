@@ -16,7 +16,9 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
             open={isOpen}
         >
             <Listbox.Button className="flex h-11 w-full items-center justify-between gap-x-2 rounded-lg border px-3 focus:outline-none">
-                <span className="capitalize line-clamp-1">{value.name || placeholder}</span>
+                {/* <span className="capitalize line-clamp-1">{value.name || placeholder}</span> */}
+                <span className="capitalize line-clamp-1">{value.name || value.title || placeholder}</span>
+
                 <div onClick={() => setIsOpen(!isOpen)}>
                     <svg
                         className="h-5 w-5 text-gray-400"
@@ -54,7 +56,7 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
                                         'bg-primary-50 font-semibold text-primary-600 hover:bg-primary-100'
                                     )}
                                 >
-                                    <span className="capitalize line-clamp-1">{item.name}</span>
+                                    <span className="capitalize line-clamp-1">{item.name || item.title}</span>
                                 </div>
                             )}
                         </Listbox.Option>
